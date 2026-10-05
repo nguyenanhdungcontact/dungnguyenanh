@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andy Nguyen | Strategy & Growth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        neutral: {
+                            50: '#fafafa',
+                            100: '#f4f4f5',
+                            200: '#e4e4e7',
+                            800: '#27272a',
+                            900: '#18181b'
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(16px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #18181b;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .img-card {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+        }
+
+        .img-card:hover {
+            transform: translateY(-4px);
+        }
+
+        /* Lightbox overlay styling */
+        #lightbox {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        #lightbox-img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            transform: scale(0.96);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #lightbox.active #lightbox-img {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="selection:bg-zinc-900 selection:text-white flex flex-col min-h-screen">
+
+    <nav class="fixed w-full z-40 glass-nav">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="text-lg font-semibold tracking-tight text-zinc-900">Andy Nguyen.</a>
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-zinc-500">
+                <a href="#about" class="hover:text-zinc-900 transition-colors">About</a>
+                <a href="#experience" class="hover:text-zinc-900 transition-colors">Experience</a>
+                <a href="#gallery" class="hover:text-zinc-900 transition-colors">Gallery</a>
+            </div>
+            <a href="https://www.linkedin.com/in/dnaprofile/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium text-white bg-zinc-900 hover:bg-zinc-800 transition-all shadow-sm">
+                LinkedIn
+                <svg class="ml-1.5 w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-32">
+        <section class="max-w-6xl mx-auto px-6 py-12 md:py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 opacity-0 animate-fade-in-up">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-zinc-100 text-zinc-700 text-xs font-semibold tracking-wide uppercase mb-6">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>Google Vietnam</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-zinc-900 leading-[1.1] mb-6">
+                        Strategy, growth & digital impact.
+                    </h1>
+                    <p class="text-lg sm:text-xl text-zinc-500 font-light leading-relaxed max-w-2xl mb-8">
+                        Hi, I'm Andy. I specialize in driving strategic initiatives, expanding operational excellence, and shaping digital ecosystems at Google in Vietnam.
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <a href="#experience" class="inline-flex items-center px-6 py-3 rounded-full text-sm font-medium text-zinc-900 bg-zinc-100 hover:bg-zinc-200 transition-colors">
+                            Explore Career
+                        </a>
+                        <a href="#gallery" class="inline-flex items-center px-6 py-3 rounded-full text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors">
+                            View Gallery &rarr;
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-zinc-200 to-zinc-100 rounded-2xl blur-lg opacity-70 group-hover:opacity-100 transition duration-500"></div>
+                        <div class="relative rounded-2xl overflow-hidden bg-zinc-100 aspect-[4/5] shadow-xl">
+                            <img src="IMG_3869.jpg" alt="Andy Nguyen" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x1000/f4f4f5/18181b?text=Andy+Nguyen'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-24 border-t border-zinc-100 bg-zinc-50/50">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="max-w-2xl mb-16">
+                    <h2 class="text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-3">About Me</h2>
+                    <h3 class="text-3xl font-bold text-zinc-900 tracking-tight">Structured thinking meets creative expression.</h3>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+                    <div class="lg:col-span-2 space-y-6 text-lg text-zinc-600 font-light leading-relaxed">
+                        <p>
+                            My professional journey revolves around solving complex market puzzles and building sustainable growth frameworks. Operating at the intersection of tech, strategy, and cross-functional leadership allows me to turn vision into measurable outcomes.
+                        </p>
+                        <p>
+                            Outside of core work, I enjoy exploring different creative outlets—from public speaking and community engagement to traveling, photography, and music. Every experience provides a fresh perspective that informs how I connect with people and ideas.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-4">
+                            <img src="IMG_6010.jpg" alt="Café vibe" class="rounded-xl object-cover w-full h-44 img-card shadow-sm" onerror="this.src='https://placehold.co/400x500/e4e4e7/27272a?text=Cafe'">
+                            <img src="DSC08399.jpg" alt="Nature" class="rounded-xl object-cover w-full h-32 img-card shadow-sm" onerror="this.src='https://placehold.co/400x400/e4e4e7/27272a?text=Nature'">
+                        </div>
+                        <div class="space-y-4 pt-6">
+                            <img src="IMG_1979.JPG" alt="Singing" class="rounded-xl object-cover w-full h-32 img-card shadow-sm" onerror="this.src='https://placehold.co/400x400/e4e4e7/27272a?text=Music'">
+                            <img src="IMG_6737.jpg" alt="Engagement" class="rounded-xl object-cover w-full h-44 img-card shadow-sm" onerror="this.src='https://placehold.co/400x500/e4e4e7/27272a?text=Event'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-24 border-t border-zinc-100">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="max-w-2xl mb-16">
+                    <h2 class="text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-3">Experience</h2>
+                    <h3 class="text-3xl font-bold text-zinc-900 tracking-tight">Professional track record.</h3>
+                </div>
+
+                <div class="max-w-3xl space-y-12">
+                    <div class="group border-l-2 border-zinc-200 pl-6 md:pl-8 relative hover:border-zinc-900 transition-colors">
+                        <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Current</span>
+                        <h4 class="text-2xl font-bold text-zinc-900 mt-1">Google Vietnam</h4>
+                        <p class="text-sm font-medium text-zinc-500 mb-4">Strategy & Operations</p>
+                        <p class="text-zinc-600 font-light leading-relaxed mb-6">
+                            Leading strategic initiatives, scaling market opportunities, and collaborating across teams to accelerate digital growth and maximize impact in Vietnam.
+                        </p>
+                        <div class="rounded-xl overflow-hidden bg-zinc-100 max-w-lg border border-zinc-100 shadow-sm">
+                            <img src="IMG_3742.jpg" alt="Presenting at Google" class="w-full h-auto object-cover img-card" onerror="this.src='https://placehold.co/600x400/f4f4f5/18181b?text=Presentation'">
+                        </div>
+                    </div>
+
+                    <div class="group border-l-2 border-zinc-200 pl-6 md:pl-8 relative hover:border-zinc-900 transition-colors">
+                        <span class="text-xs font-medium text-zinc-400 uppercase tracking-wider">Previous & Ongoing</span>
+                        <h4 class="text-2xl font-bold text-zinc-900 mt-1">Industry Engagement & Ecosystems</h4>
+                        <p class="text-sm font-medium text-zinc-500 mb-4">Leadership & Partnerships</p>
+                        <p class="text-zinc-600 font-light leading-relaxed mb-6">
+                            Deepening insights into fast-evolving tech ecosystems, platform communities, and effective cross-functional leadership paradigms.
+                        </p>
+                        <div class="rounded-xl overflow-hidden bg-zinc-100 max-w-lg border border-zinc-100 shadow-sm">
+                            <img src="IMG_4191.jpg" alt="YouTube event" class="w-full h-auto object-cover img-card" onerror="this.src='https://placehold.co/600x400/f4f4f5/18181b?text=YouTube+Event'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="py-24 border-t border-zinc-100 bg-zinc-50/50">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                    <div>
+                        <h2 class="text-xs font-semibold uppercase tracking-widest text-zinc-400 mb-3">Visuals</h2>
+                        <h3 class="text-3xl font-bold text-zinc-900 tracking-tight">Moments & Memories.</h3>
+                    </div>
+                    <p class="text-zinc-400 text-sm mt-2 md:mt-0">Click any image to expand.</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-200 cursor-pointer img-card shadow-sm" onclick="openLightbox('DSC06615_SnapseedCopy.jpg')">
+                        <img src="DSC06615_SnapseedCopy.jpg" alt="Portrait" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/e4e4e7/27272a?text=Portrait'">
+                    </div>
+                    <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-200 cursor-pointer img-card shadow-sm" onclick="openLightbox('IMG_3869.jpg')">
+                        <img src="IMG_3869.jpg" alt="Google Office" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/e4e4e7/27272a?text=Google'">
+                    </div>
+                    <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-200 cursor-pointer img-card shadow-sm" onclick="openLightbox('DSC08399.jpg')">
+                        <img src="DSC08399.jpg" alt="Nature" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/e4e4e7/27272a?text=Nature'">
+                    </div>
+                    <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-200 cursor-pointer img-card shadow-sm" onclick="openLightbox('IMG_3742.jpg')">
+                        <img src="IMG_3742.jpg" alt="Presenting" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/e4e4e7/27272a?text=Presenting'">
+                    </div>
+                    <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-200 cursor-pointer img-card shadow-sm" onclick="openLightbox('IMG_4191.jpg')">
+                        <img src="IMG_4191.jpg" alt="YouTube" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/e4e4e7/27272a?text=YouTube'">
+                    </div>
+                    <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-200 cursor-pointer img-card shadow-sm" onclick="openLightbox('IMG_6010.jpg')">
+                        <img src="IMG_6010.jpg" alt="Café" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/e4e4e7/27272a?text=Cafe'">
+                    </div>
+                    <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-200 cursor-pointer img-card shadow-sm" onclick="openLightbox('IMG_6737.jpg')">
+                        <img src="IMG_6737.jpg" alt="Event" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/e4e4e7/27272a?text=Event'">
+                    </div>
+                    <div class="aspect-[3/4] rounded-xl overflow-hidden bg-zinc-200 cursor-pointer img-card shadow-sm" onclick="openLightbox('IMG_1979.JPG')">
+                        <img src="IMG_1979.JPG" alt="Singing" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/e4e4e7/27272a?text=Music'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 border-t border-zinc-100 text-center">
+            <div class="max-w-2xl mx-auto px-6">
+                <h3 class="text-3xl font-bold text-zinc-900 tracking-tight mb-4">Let's connect.</h3>
+                <p class="text-zinc-500 font-light mb-8">Always open to discussing strategy, growth opportunities, or exchanging perspectives.</p>
+                <a href="https://www.linkedin.com/in/dnaprofile/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-4 rounded-full text-sm font-medium text-white bg-zinc-900 hover:bg-zinc-800 transition-all shadow-sm">
+                    Connect on LinkedIn &rarr;
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-8 border-t border-zinc-100 text-center text-xs text-zinc-400">
+        <p>&copy; 2026 Andy Nguyen. All rights reserved.</p>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-zinc-900 bg-zinc-100 hover:bg-zinc-200 rounded-full p-3 transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <img id="lightbox-img" src="" alt="Enlarged view">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>
